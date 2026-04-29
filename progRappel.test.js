@@ -59,10 +59,10 @@ describe("getRetakeExams", () => {
       grades: {
         WEB1: 8,
         PROG1: 15,
-        MATH1: 5,
+        THEORIE1: 5,
       },
     };
     const result = getRetakeExams(student);
-    expect(result).to.deep.equal(["WEB1", "MATH1"]);
+    expect(result).to.deep.equal(["WEB1", "THEORIE1"]);
   });
 });

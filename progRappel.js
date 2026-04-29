@@ -1,32 +1,17 @@
+// Compte les personnes majeures (>= 18 ans)
 export function countAdult(ages) {
-  let countAges = 0;
-  for (let a in ages) {
-    if (a >= 18) {
-      countAges++;
-    }
-  }
-  return countAges;
+  return ages.filter((age) => age >= 18).length;
 }
 
+// Compte les adresses contenant 'ivandry' (insensible à la casse)
 export function getIvandry(addresses) {
-  let countAddr = 0;
-  for (let addr in addresses) {
-    if (typeof addr === "string" && addr.toLowerCase().includes("ivandry")) {
-      countAddr++;
-    }
-  }
-  return countAddr;
+  return addresses.filter((addr) => addr.toLowerCase().includes("ivandry"))
+    .length;
 }
 
+// Retourne les UEs avec une note < 10 (rattrapage)
 export function getRetakeExams(student) {
-  if (!student || !student.grades) {
-    return [];
-  }
-  let countRetakes = [];
-  for (let ue in student.grades) {
-    if (student.grades[ue] < 10) {
-      countRetakes.push(ue);
-    }
-  }
-  return countRetakes;
+  return Object.entries(student.grades)
+    .filter(([ue, grade]) => grade < 10)
+    .map(([ue]) => ue);
 }

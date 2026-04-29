@@ -15,6 +15,7 @@ describe("countAdult", () => {
     expect(result).to.equal(0);
   });
 });
+
 describe("getIvandry", () => {
   it("should return the count of addresses containing 'ivandry'", () => {
     const addresses = [
@@ -47,6 +48,21 @@ describe("getRetakeExams", () => {
       },
     };
     const result = getRetakeExams(student);
-    expect(result).to.equal([]);
+    expect(result).to.deep.equal([]); // ✅ deep.equal pour comparer les tableaux par valeur
+  });
+
+  it("should return UEs with grade below 10", () => {
+    const student = {
+      std: "STD26002",
+      firstName: "Jane",
+      lastName: "Smith",
+      grades: {
+        WEB1: 8,
+        PROG1: 15,
+        MATH1: 5,
+      },
+    };
+    const result = getRetakeExams(student);
+    expect(result).to.deep.equal(["WEB1", "MATH1"]);
   });
 });
